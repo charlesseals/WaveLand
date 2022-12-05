@@ -1,0 +1,14 @@
+.employees {
+    display: flex;
+    flex-direction: row;
+    flex-Wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.employee {
+    background-color: rgb(189, 228, 214);
+    border: 3px dotted rgb(57, 136, 104);
+    color: black;
+    padding: .5rem;
+    margin: .5rem;
+}

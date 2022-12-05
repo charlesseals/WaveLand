@@ -1,0 +1,14 @@
+.customers {
+    display: flex;
+    flex-direction: row;
+    flex-Wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.customer {
+    background-color: rgb(228, 189, 189);
+    border: 3px dotted rgb(136, 57, 57);
+    color: black;
+    padding: .5rem;
+    margin: .5rem;
+}
