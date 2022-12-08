@@ -7,7 +7,7 @@ export const ArtistSearch = ({ setterFunction }) => {
                         setterFunction(changeEvent.target.value)
                     }
                 }
-            type="text" placeholder="Enter Search Terms" />
+            type="text" placeholder="Enter Country Name" />
         </div>
     )
 }

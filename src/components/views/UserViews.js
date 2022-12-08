@@ -19,6 +19,7 @@ export const UserViews = () => {
 
                 {/* <Route path="artists" element={ <ArtistList /> } /> */}
                 <Route path="artists" element={ <ArtistContainer /> } />
+                {/* <Route path="atrists" element={ <ArtistForm /> } /> */}
                 <Route path="atrist/create" element={ <ArtistForm /> } />
                 <Route path="profile" element={ <Profile /> } />
                 {/* <Route path="artists" element={ <ArtistSearch /> } /> */}
