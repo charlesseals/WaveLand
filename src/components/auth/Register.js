@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
 export const Register = (props) => {
-    const [customer, setCustomer] = useState({
+    const [user, setUser] = useState({
         email: "",
-        fullName: "",
-        isStaff: false
+        userName: ""
     })
     let navigate = useNavigate()
 
@@ -16,12 +15,12 @@ export const Register = (props) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(customer)
+            body: JSON.stringify(user)
         })
             .then(res => res.json())
             .then(createdUser => {
                 if (createdUser.hasOwnProperty("id")) {
-                    localStorage.setItem("honey_user", JSON.stringify({
+                    localStorage.setItem("waveland_user", JSON.stringify({
                         id: createdUser.id,
                         staff: createdUser.isStaff
                     }))
@@ -33,7 +32,7 @@ export const Register = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`http://localhost:8088/users?email=${customer.email}`)
+        return fetch(`http://localhost:8088/users?email=${user.email}`)
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {
@@ -47,36 +46,27 @@ export const Register = (props) => {
             })
     }
 
-    const updateCustomer = (evt) => {
-        const copy = {...customer}
+    const updateUser = (evt) => {
+        const copy = {...user}
         copy[evt.target.id] = evt.target.value
-        setCustomer(copy)
+        setUser(copy)
     }
 
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Honey Rae Repairs</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Please Register for WaveLand</h1>
                 <fieldset>
-                    <label htmlFor="fullName"> Full Name </label>
-                    <input onChange={updateCustomer}
-                           type="text" id="fullName" className="form-control"
+                    <label htmlFor="userName"> Username </label>
+                    <input onChange={updateUser}
+                           type="text" id="userName" className="form-control"
                            placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
-                    <input onChange={updateCustomer}
+                    <input onChange={updateUser}
                         type="email" id="email" className="form-control"
                         placeholder="Email address" required />
-                </fieldset>
-                <fieldset>
-                    <input onChange={(evt) => {
-                        const copy = {...customer}
-                        copy.isStaff = evt.target.checked
-                        setCustomer(copy)
-                    }}
-                        type="checkbox" id="isStaff" />
-                    <label htmlFor="email"> I am an employee </label>
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>
