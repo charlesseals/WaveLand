@@ -1,17 +1,11 @@
-import { CustomerViews } from "./CustomerViews"
-import { EmployeeViews } from "./EmployeeViews"
+import { UserViews } from "./UserViews"
 
 export const ApplicationViews = () => {
 
-    const localHoneyUser = localStorage.getItem("honey_user")
-    const honeyUserObject = JSON.parse(localHoneyUser)
+    const localWavelandUser = localStorage.getItem("waveland_user")
+    const wavelandUserObject = JSON.parse(localWavelandUser)
 
-    if (honeyUserObject.staff) {
-        //Return Employee Views
-        return <EmployeeViews />
-    }
-    else {
-        // Return Customer Views
-        return <CustomerViews />
+    if (wavelandUserObject) {
+        return <UserViews />
     }
 }

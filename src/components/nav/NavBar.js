@@ -1,22 +1,12 @@
-import { CustomerNav } from "./CustomerNav"
-import { EmployeeNav } from "./EmployeeNav"
+import { UserNav } from "./UserNav"
 import "./NavBar.css"
 
 export const NavBar = () => {
-    const localHoneyUser = localStorage.getItem("honey_user")
-    const honeyUserObject = JSON.parse(localHoneyUser)
+    const localWavelandUser = localStorage.getItem("waveland_user")
+    const wavelandUserObject = JSON.parse(localWavelandUser)
 
-    if (honeyUserObject.staff) {
-        //Return Employee Views
-        return <>
-            <EmployeeNav />
-            
-        </>
-
-    }
-    else {
-        // Return Customer Views
-        return <CustomerNav />
+    if (wavelandUserObject) {
+        return <UserNav />
     }
 }
 
