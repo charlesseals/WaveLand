@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ArtistForm } from "./ArtistForm"
 import "./Artists.css"
-// import { HeartSwitch } from '@anatoliygatt/heart-switch';
 
 export const ArtistList = ({searchTermState}) => {
     const [artists, setArtists] = useState([])
     const [countries, setCountries] = useState([])
     const [filteredArtists, setFiltered] = useState([])
-    
+    const [favorites, setFavorites] = useState([])  
     const navigate = useNavigate()
-    
     const localWavelandUser = localStorage.getItem("waveland_user")
     const wavelandUserObject = JSON.parse(localWavelandUser)
 
@@ -35,7 +32,6 @@ export const ArtistList = ({searchTermState}) => {
         },
         []
         )
-
     useEffect(
         
         () => {
@@ -46,60 +42,82 @@ export const ArtistList = ({searchTermState}) => {
         },
         [ searchTermState ]
     )
-        
-// let icon = document.querySelector('ion-icon');
-//     icon.onclick = function(){
-//     icon.classList.toggle('active');
-// }
-
-// function Example() {
-//     const [checked, setChecked] = useState(false);}
-
-const handleFavoriteButton = (event, artistObj) => {
-    event.preventDefault()
-    console.log("You clicked the button")
-    // TODO: Create the object to be saved to the API
-    const newFavorite = {
-        userId: wavelandUserObject.id,
-        artistId: artistObj.id
-    }
-        
-
-    // TODO: Perform the fetch() to POST the object to the API
-    return fetch(`http://localhost:8088/favorites`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/favorites`)
+            .then(res => res.json())
+            .then((favoritesArray) => {
+                setFavorites(favoritesArray)
+            })
         },
-        body: JSON.stringify(newFavorite)
-    })
-        .then(res => res.json())
-        .then(() => {
-            navigate("/favorites")
-        })
+        []
+        )
+    
+
+const matchedArtist = (event, artistObj) => {
+    if (favorites.find((favorite) => 
+    artistObj.id === favorite.artistId
+    )){
+        window.alert(`❌ Artist already in Favorites ❌`)
+    } else {
+        window.alert(`✅ Added to Favorites ✅`)
+
+        handleFavoriteButton(artistObj)
+    }
 }
 
+const handleFavoriteButton = (artistObj) => {
 
-                return <>
-                
-            
+    // favObj.preventDefault()
+    
+        // if (artistObj.id !== favorite.id) {
+            const newFavorite = {
+                userId: wavelandUserObject.id,
+                artistId: artistObj.id
+            }
+            fetch(`http://localhost:8088/favorites`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newFavorite)
+            })
+            .then(res => res.json())
+            // .then(() => {
+            //     navigate("/artists")
+            // })
+            .then(() => {
+                fetch(`http://localhost:8088/favorites`)
+                .then(res => res.json())
+                .then((favoritesArray) => {
+                    setFavorites(favoritesArray)
+                })
+            })
+            console.log("Artist Added to Favorites List")
+    
+        }
+
+
+                return (
+                    <>
+
                     <h2>List of Artists</h2>
             
                     <article className="artists">
                         {
                             filteredArtists.map(
-                            // artists.map(
 
                                 (artist) => {
                                     return <section className="artist" key={`Artist--${artist.id}`}>
-                                        {/* <div>{artist.image}</div> */}
                                         <>
                                             <div className="image">                                   
                                                 <img src={artist.image} alt="image" width={300} height={300}/>
                                             </div>
                                             <h2>{artist.name}</h2>
                                             <button className="favorites" onClick={(event) => {
-                                                handleFavoriteButton(event, artist)
+                                                
+                                                            // handleFavoriteButton(event, artist)
+                                                            matchedArtist(event, artist)
                                             }}>Favorite</button>
                                             {/* <div>{ArtistForm}</div> */}
                                             
@@ -120,6 +138,8 @@ const handleFavoriteButton = (event, artistObj) => {
                     </article>
             
                 </>
-            }
-
+            
+            
+                )
+}
         

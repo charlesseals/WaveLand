@@ -12,6 +12,10 @@ export const UserNav = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/favorites">Favorites</Link>
             </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/newArtist">Add New Artist</Link>
+            </li>
+
             <li className="navbar__item navbar_logout">
                 <Link className="navbar__link" to="/profile">Profile</Link>
             </li>

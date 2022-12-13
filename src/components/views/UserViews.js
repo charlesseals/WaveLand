@@ -1,9 +1,11 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { Profile } from "../profile/Profile"
 import { ArtistForm } from "../artists/ArtistForm"
-import { ArtistList } from "../artists/ArtistList"
+import { FavoriteList } from "../favorites/FavoriteList"
 import { ArtistContainer } from "../artists/ArtistContainer"
 import { ArtistSearch } from "../artists/ArtistSearch"
+import { FavoriteContainer } from "../favorites/FavoriteContianer"
+import { NewArtist } from "../newArtist/NewArtist"
 
 export const UserViews = () => {
 	return (
@@ -17,11 +19,14 @@ export const UserViews = () => {
                 </>
             }>
 
-                {/* <Route path="artists" element={ <ArtistList /> } /> */}
+                {/* <Route path="favorites" element={ <FavoriteList /> } /> */}
+                <Route path="favorites" element={ <FavoriteContainer /> } />
                 <Route path="artists" element={ <ArtistContainer /> } />
                 {/* <Route path="atrists" element={ <ArtistForm /> } /> */}
-                <Route path="atrist/create" element={ <ArtistForm /> } />
+                {/* <Route path="atrist/create" element={ <ArtistForm /> } /> */}
                 <Route path="profile" element={ <Profile /> } />
+                <Route path="newArtist" element={ <NewArtist /> } />
+
                 {/* <Route path="artists" element={ <ArtistSearch /> } /> */}
             </Route>
         </Routes>

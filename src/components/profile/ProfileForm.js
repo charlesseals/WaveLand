@@ -3,11 +3,7 @@ import { useEffect, useState } from "react"
 
 export const ProfileForm = () => {
     // TODO: Provide initial state for profile
-    const [profile, updateProfile] = useState({
-        // email: "",
-        // userName: "",
-        // id: 0
-    })
+    const [profile, updateProfile] = useState({})
     
     
     const localWavelandUser = localStorage.getItem("waveland_user")
