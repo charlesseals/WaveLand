@@ -1,0 +1,11 @@
+.landing {
+    font-family: "Pacifico", 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', serif;
+    letter-spacing: 2px;
+    /* text-align: center;   */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+  

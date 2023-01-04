@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { CountrySelect } from "./CountrySelect"
 import { GenreSelect } from "./GenreSelect"
+import { NewArtist } from "./NewArtist.css"
 
 
 export const NewArtistForm = () => {
@@ -101,14 +102,15 @@ export const NewArtistForm = () => {
             {feedback}
         </div>
         <form className="newArtist">
-            <h2 className="newArtist__title">Add A New Artist</h2>
+            <h3 className="newArtist__title">Add A New Artist</h3>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="newArtistName">Artist Name:</label>
+                    <label htmlFor="newArtistName"></label>
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
+                        placeholder="Artist Name"
                         value={newArtistObj.name}
                         onChange={
                             (evt) => {
@@ -122,9 +124,10 @@ export const NewArtistForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="newArtistImage">Add Image URL:</label>
+                    <label htmlFor="newArtistImage"></label>
                     <input type="text"
                         className="form-control"
+                        placeholder="Add Image URL"
                         value={newArtistObj.image}
                         onChange={
                             (evt) => {
@@ -143,7 +146,7 @@ export const NewArtistForm = () => {
                         copy.countryId = parseInt(event.target.value)
                         setNewArtistObj(copy)
                     }
-                } className="form-group">
+                } className="select_group">
                     <option value={0}>Select Country</option>
                     {countries.map((country) => <option value={country.id}>{country.name}</option>)}
                 </select>
@@ -155,7 +158,7 @@ export const NewArtistForm = () => {
                         copy.genreId = parseInt(event.target.value)
                         setNewArtistObj(copy)
                     }
-                } className="form-group">
+                } className="select_group">
                     <option value={0}>Select Genre</option>
                     {genres.map((genre) => <option value={genre.id}>{genre.name}</option>)}
                 </select>

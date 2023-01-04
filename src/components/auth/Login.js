@@ -35,7 +35,7 @@ export const Login = () => {
                     <h1>WaveLand</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+                        <label htmlFor="inputEmail"> </label>
                         <input type="email"
                             value={email}
                             onChange={evt => set(evt.target.value)}
@@ -48,10 +48,10 @@ export const Login = () => {
                             Sign in
                         </button>
                     </fieldset>
-                </form>
-            </section>
             <section className="link--register">
                 <Link to="/register">Register</Link>
+            </section>
+                </form>
             </section>
         </main>
     )
