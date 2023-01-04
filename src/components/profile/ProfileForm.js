@@ -58,10 +58,11 @@ export const ProfileForm = () => {
             {feedback}
         </div>
         <form className="profile">
-            <h2 className="profile__title">User Profile Information</h2>
+            <h3 className="profile__title">User Profile Information</h3>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="userName">Change username:</label>
+                    <aside>
                     <input
                         required autoFocus
                         type="text"
@@ -75,11 +76,13 @@ export const ProfileForm = () => {
                                     updateProfile(copy)
                             }
                         } />
+                    </aside>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="email">Change email:</label>
+                    <aside>
                     <input type="text"
                         className="form-control"
                         value={profile.email}
@@ -91,6 +94,8 @@ export const ProfileForm = () => {
                                     updateProfile(copy)
                             }
                         } />
+
+                    </aside>
                 </div>
             </fieldset>
             <button

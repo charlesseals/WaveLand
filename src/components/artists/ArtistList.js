@@ -44,7 +44,7 @@ export const ArtistList = ({searchTermState}) => {
     )
     useEffect(
         () => {
-            fetch(`http://localhost:8088/favorites`)
+            fetch(`http://localhost:8088/favorites?_expand=artist&userId=${wavelandUserObject.id}`)
             .then(res => res.json())
             .then((favoritesArray) => {
                 setFavorites(favoritesArray)
@@ -55,15 +55,15 @@ export const ArtistList = ({searchTermState}) => {
     
 
 const matchedArtist = (event, artistObj) => {
-    if (favorites.find((favorite) => 
-    artistObj.id === favorite.artistId
-    )){
-        window.alert(`❌ Artist already in Favorites ❌`)
-    } else {
-        window.alert(`✅ Added to Favorites ✅`)
+        if (favorites.find((favorite) => 
+        artistObj.id === favorite.artistId
+        )){
+            window.alert(`❌ Artist already in Favorites ❌`)
+        } else {
+            window.alert(`✅ Added to Favorites ✅`)
 
-        handleFavoriteButton(artistObj)
-    }
+            handleFavoriteButton(artistObj)
+        }
 }
 
 const handleFavoriteButton = (artistObj) => {
@@ -87,7 +87,7 @@ const handleFavoriteButton = (artistObj) => {
             //     navigate("/artists")
             // })
             .then(() => {
-                fetch(`http://localhost:8088/favorites`)
+                fetch(`http://localhost:8088/favorites?_expand=artist&userId=${wavelandUserObject.id}`)
                 .then(res => res.json())
                 .then((favoritesArray) => {
                     setFavorites(favoritesArray)

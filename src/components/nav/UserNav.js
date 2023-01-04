@@ -6,6 +6,11 @@ export const UserNav = () => {
 
     return (
         <ul className="navbar">
+            {/* <div className="title">"WaveLand</div> */}
+            <div className="li">
+            <li className="title">
+                <Link className="navbar__link" to="/">WaveLand</Link>
+            </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/artists">Artists</Link>
             </li>
@@ -30,6 +35,7 @@ export const UserNav = () => {
                     </li>
                     : ""
             }
+            </div>
         </ul>
     )
 }

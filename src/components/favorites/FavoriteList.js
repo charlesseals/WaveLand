@@ -90,8 +90,6 @@ const deleteFavoriteButton = (id) => {
                     <article className="artists">
                         {
                             filteredArtists.map(
-                            // artists.map(
-
                                 (artist) => {
                                     return <section className="artist" key={`Artist--${artist.id}`}>
                                         <>

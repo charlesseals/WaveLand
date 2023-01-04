@@ -10,12 +10,14 @@ fieldset {
 }
 
 .form--login {
-    display: inline-block;
+    padding: 15% 0;
+    text-align: center;
+    display: center;
     margin: 0 auto;
-    text-align: left;
 }
 
 .form--login > fieldset > input[type="email"] {
+    text-align: center;
     width: 25em;
 }
 
@@ -25,8 +27,9 @@ fieldset {
 }
 
 .form-control {
-    display: block;
-    width: 94%;
+    text-align: center;
+    display: center;
+    width: 25em;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -43,6 +46,7 @@ fieldset {
 
 .container--login {
     text-align: center;
+
 }
 
 .form--login {

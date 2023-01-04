@@ -6,14 +6,15 @@ import { ArtistContainer } from "../artists/ArtistContainer"
 import { ArtistSearch } from "../artists/ArtistSearch"
 import { FavoriteContainer } from "../favorites/FavoriteContianer"
 import { NewArtist } from "../newArtist/NewArtist"
+import { Views } from "./Views.css"
 
 export const UserViews = () => {
 	return (
         <Routes>
             <Route path="/" element={
                 <>
-                    <h1>WaveLand</h1>
-                    <div>Make Listening an Adventure</div>
+                    {/* <h1 className="landing">WaveLand</h1> */}
+                    <h2 classname="landing">Make Listening an Adventure</h2>
 
                     <Outlet />
                 </>
