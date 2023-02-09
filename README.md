@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+
+# The link below is to get to the server code for this project
+# https://github.com/charlesseals/WaveLand-API
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
